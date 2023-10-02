@@ -1,0 +1,57 @@
+@startuml
+
+class Adherent {
+    - {static} string numeroAdhesion
+    - string prenom
+    - string nom
+    - string email
+    - string dateAdhesion
+    - genererNumero() : void
+    + renouvelerAdhesion() : void
+    + find() : string
+    + isAdhesionValable() : bool
+}
+
+
+
+class Emprunt {
+    - string dateEmprunt
+    - string dateRetour
+    + find() : string
+    + isEnCours() : bool
+    + isEnAlerte() : bool
+    + isDureeDepassee() : bool
+}
+
+
+
+
+abstract class Media {
+    # string titre
+    + {abstract} find() : string
+}
+
+class Livre extends Media {
+    - string auteur
+    - int nbPages
+    + find() : string
+}
+
+class Blu-Ray extends Media {
+    - string realisateur
+    - string duree
+    - string anneeSortie
+    + find() : string
+}
+
+class Magazine extends Media {
+    - {static} string numero
+    - string datePublication
+    + find() : string
+}
+
+
+Adherent "1.*" --> "0.*" Media
+(Adherent, Media) .. Emprunt
+
+@enduml
