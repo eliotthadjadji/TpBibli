@@ -37,7 +37,7 @@ class BluRay extends Media {
     }
 
 
-    public function find(): string {
+    public function afficher(): string {
         return "Titre : $this->titre ($this->anneeSortie) - Durée : $this->duree - $this->realisateur";
     }
 

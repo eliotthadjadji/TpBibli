@@ -37,7 +37,7 @@ class Livre extends Media {
     }
 
 
-    public function find(): string {
+    public function afficher(): string {
         return "Titre : $this->titre - ISBN : $this->isbn" . PHP_EOL .
             "$this->auteur - $this->nbPages pages";
     }

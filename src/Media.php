@@ -18,7 +18,7 @@ abstract class Media {
         return $this->titre;
     }
 
-    abstract public function find() : string;
+    abstract public function afficher() : string;
 
 
 

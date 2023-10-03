@@ -30,7 +30,7 @@ class Magazine extends Media {
     }
 
 
-    public function find(): string {
+    public function afficher(): string {
         return "Titre : $this->titre - N° $this->numero - $this->dateSortie";
     }
 

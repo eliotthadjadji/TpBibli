@@ -21,8 +21,8 @@ class Adherent {
             $this->dateAdhesion = $dateAdhesion;
         } else {
             $dateAdhesion = str_replace("/","-", $dateAdhesion);
-            $newdate = new \DateTime($dateAdhesion);
-            $this->dateAdhesion = $newdate;
+            $strToDate = new \DateTime($dateAdhesion);
+            $this->dateAdhesion = $strToDate;
         }
 
     }
@@ -60,7 +60,7 @@ class Adherent {
         return $numeroAleatoire;
     }
 
-    public function find() : string {
+    public function afficher() : string {
         return "Numéro d'adhérent : {$this->getNumeroAdherent()}" . PHP_EOL .
             "$this->prenom $this->nom - $this->email" . PHP_EOL .
             "Date d'adhésion : {$this->getDateAdhesion()}";
@@ -74,7 +74,7 @@ class Adherent {
     }
 
     public function renouvelerAdhesion() : void {
-        $this->dateAdhesion = new \DateTime();
+        $this->dateAdhesion->modify("+1 year");
     }
 
 }
