@@ -21,8 +21,8 @@ class Adherent {
             $this->dateAdhesion = $dateAdhesion;
         } else {
             $dateAdhesion = str_replace("/","-", $dateAdhesion);
-            $newdate = new \DateTime($dateAdhesion);
-            $this->dateAdhesion = $newdate;
+            $strToDate = new \DateTime($dateAdhesion);
+            $this->dateAdhesion = $strToDate;
         }
 
     }
@@ -74,7 +74,7 @@ class Adherent {
     }
 
     public function renouvelerAdhesion() : void {
-        $this->dateAdhesion = new \DateTime();
+        $this->dateAdhesion->modify("+1 year");
     }
 
 }
