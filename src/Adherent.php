@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Cassandra\Date;
+
 class Adherent {
     private string $numeroAdherent;
     private string $prenom;
@@ -10,13 +12,19 @@ class Adherent {
     private string|\DateTime $dateAdhesion;
 
 
-    public function __construct(string $prenom, string $nom, string $email, string|\DateTime $dateAdhesion = new \DateTime())
-    {
+    public function __construct(string $prenom, string $nom, string $email, string|\DateTime $dateAdhesion = new \DateTime()) {
         $this->numeroAdherent = $this->genererNumero();
         $this->prenom = $prenom;
         $this->nom = $nom;
         $this->email = $email;
-        $this->dateAdhesion = $dateAdhesion->format("d/m/y");
+        if ($dateAdhesion instanceof \DateTime) {
+            $this->dateAdhesion = $dateAdhesion;
+        } else {
+            $dateAdhesion = str_replace("/","-", $dateAdhesion);
+            $newdate = new \DateTime($dateAdhesion);
+            $this->dateAdhesion = $newdate;
+        }
+
     }
 
     public function getNumeroAdherent(): string
@@ -39,9 +47,9 @@ class Adherent {
         return $this->email;
     }
 
-    public function getDateAdhesion(): string|\DateTime
+    public function getDateAdhesion(): string
     {
-        return $this->dateAdhesion;
+        return $this->dateAdhesion->format("d/m/Y");
     }
 
 
@@ -62,7 +70,7 @@ class Adherent {
         $dateJour = new \DateTime();
         $diff = $dateJour->diff($this->dateAdhesion);
         $interval = $diff->days;
-        $interval <= 365 ? true : false;
+        return $interval <= 365 ? true : false;
     }
 
     public function renouvelerAdhesion() : void {
