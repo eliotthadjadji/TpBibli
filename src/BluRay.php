@@ -8,8 +8,9 @@ class BluRay extends Media {
     private string $anneeSortie;
 
 
-    public function __construct(string $titre, int $dureeEmprunt, string $realisateur, string $duree, string $anneeSortie) {
-        parent::__construct($titre, $dureeEmprunt);
+    public function __construct(string $titre, string $realisateur, string $duree, string $anneeSortie) {
+        parent::__construct($titre);
+        $this->dureeEmprunt = 15;
         $this->realisateur = $realisateur;
         $this->duree = $duree;
         $this->anneeSortie = $anneeSortie;

@@ -7,8 +7,9 @@ class Magazine extends Media {
     private string $dateSortie;
 
 
-    public function __construct(string $titre, int $dureeEmprunt, string $numero, string $dateSortie) {
-        parent::__construct($titre, $dureeEmprunt);
+    public function __construct(string $titre, string $numero, string $dateSortie) {
+        parent::__construct($titre);
+        $this->dureeEmprunt = 10;
         $this->numero = $numero;
         $this->dateSortie = $dateSortie;
     }
