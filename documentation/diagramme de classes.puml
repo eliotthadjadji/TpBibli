@@ -5,19 +5,22 @@ class Adherent {
     - string prenom
     - string nom
     - string email
-    - string dateAdhesion
+    - DateTime dateAdhesion
     - genererNumero() : void
     + renouvelerAdhesion() : void
-    + find() : string
+    + afficher() : string
     + isAdhesionValable() : bool
 }
 
 
 
 class Emprunt {
-    - string dateEmprunt
-    - string dateRetour
-    + find() : string
+    - DateTime dateEmprunt
+    - DateTime dateRetourEstimee
+    - ?DateTime dateRetour
+    - Adherent adherent
+    - Media media
+    + afficher() : string
     + isEnCours() : bool
     + isEnAlerte() : bool
     + isDureeDepassee() : bool
@@ -28,26 +31,27 @@ class Emprunt {
 
 abstract class Media {
     # string titre
-    + {abstract} find() : string
+    # int dureeEmprunt
+    + {abstract} afficher() : string
 }
 
 class Livre extends Media {
     - string auteur
     - int nbPages
-    + find() : string
+    + afficher() : string
 }
 
 class Blu-Ray extends Media {
     - string realisateur
     - string duree
     - string anneeSortie
-    + find() : string
+    + afficher() : string
 }
 
 class Magazine extends Media {
     - {static} string numero
     - string datePublication
-    + find() : string
+    + afficher() : string
 }
 
 
