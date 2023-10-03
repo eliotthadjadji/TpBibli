@@ -60,7 +60,7 @@ class Adherent {
         return $numeroAleatoire;
     }
 
-    public function find() : string {
+    public function afficher() : string {
         return "Numéro d'adhérent : {$this->getNumeroAdherent()}" . PHP_EOL .
             "$this->prenom $this->nom - $this->email" . PHP_EOL .
             "Date d'adhésion : {$this->getDateAdhesion()}";
