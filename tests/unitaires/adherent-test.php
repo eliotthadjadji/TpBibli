@@ -55,8 +55,12 @@ if (!$resultat) {
 
 // Test renouveler adhésion
 $adherent6 = new \App\Adherent("fee", "lee", "feelee@gmail.com", "15/05/2020");
+$dateAdhesion = str_replace("/","-", $adherent6->getDateAdhesion());
+$dateNouvelleAdhesion = new DateTime($dateAdhesion);
+$dateNouvelleAdhesion->modify("+1 year");
+
 $resultat = $adherent6->renouvelerAdhesion();
-if ($adherent6->getDateAdhesion() == (new DateTime())->format("d/m/Y")) {
+if ($adherent6->getDateAdhesion() == $dateNouvelleAdhesion->format("d/m/Y")) {
     echo GREEN . "Test 6 OK" . RESET . PHP_EOL;
 } else {
     echo RED . "Test 6 pas OK" . RESET . PHP_EOL;
