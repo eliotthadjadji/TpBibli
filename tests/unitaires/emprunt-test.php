@@ -68,7 +68,7 @@ if ($empruntLivre->isEnAlerte()) {
 }
 
 
-// Test fonction isDureeDepassee
+// Test fonction isDureeDepassee - doit afficher Test pas OK
 $dateDepassee = new DateTime("2023-12-18");
 $empruntLivre = new \App\Emprunt($adherent, $livre, $dateDepassee);
 if ($empruntLivre->isDureeDepassee()) {
