@@ -65,7 +65,7 @@ class Emprunt {
 
     public function isDureeDepassee() : bool {
         if (isset($this->dateRetour)) {
-            return $this->dateRetour->getTimestamp() > $this->dateRetourEstimee->getTimestamp() ? true : false;
+            return $this->dateRetour->getTimestamp() < $this->dateRetourEstimee->getTimestamp() ? true : false;
         } else {
             return false;
         }
